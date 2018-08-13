@@ -1,0 +1,1 @@
+INSERT INTO User (id, lastname, firstname, email, pwd) VALUES (10, 'nomfamille', 'prenom', 'monmail', 'toto');
