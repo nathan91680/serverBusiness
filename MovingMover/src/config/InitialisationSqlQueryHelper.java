@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import dao.exception.DAOConfigurationException;
@@ -32,5 +33,17 @@ public class InitialisationSqlQueryHelper implements ServletContextListener{
         return properties;
     	
     }
+
+	@Override
+	public void contextDestroyed(ServletContextEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
