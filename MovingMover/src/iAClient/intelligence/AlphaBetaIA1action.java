@@ -68,7 +68,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x+1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1) )//x+1, y))					
 					posPlayers.get(0).set(0, newXPlayer);
 				else
 					continue;
@@ -80,7 +80,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(! holes.contains(temp))//x-1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x-1, y))					
 					posPlayers.get(0).set(0, newXPlayer);
 				else
 					continue;
@@ -92,7 +92,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(! holes.contains(temp))//x, y+1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y+1))					
 					posPlayers.get(0).set(1, newYPlayer);
 				else
 					continue;
@@ -103,7 +103,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) - 1;                    	
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp))//x, y-1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y-1))					
 					posPlayers.get(0).set(1, newYPlayer);
 				else
 					continue;
@@ -111,7 +111,7 @@ public class AlphaBetaIA1action extends GenericIA{
 
 
 			// simu 
-			tmp = min(profondeur-1);//etatJeu
+			tmp = min(profondeur-1, max);//etatJeu
 
 			if(tmp > max){
 				max = tmp;
@@ -152,7 +152,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x+1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x+1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -163,7 +163,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) - 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x-1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x-1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -174,7 +174,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) + 1;
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp))//x, y+1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y+1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -185,19 +185,16 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) - 1;
 				temp.set(1, newXPlayer);				
 
-				if(! holes.contains(temp))//x, y-1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y-1))					
 					posArrows.add(temp);
 				else
 					continue;
 			}
 
-			//j==4 signifie pas de fleche
-
 			for(int k=0 ; k<4 ; k++){ //sens fleche
 
 				// affectation sens fleches
 
-				if(j != 4){
 
 					if(k==0)
 						dirArrows.add('L');
@@ -207,7 +204,6 @@ public class AlphaBetaIA1action extends GenericIA{
 						dirArrows.add('U');
 					if(k==3)
 						dirArrows.add('D');
-				}
 
 				// simu 
 				tmp = min(profondeur-1, max);//etatJeu
@@ -290,7 +286,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x+1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x+1, y))					
 					posPlayers.get(0).set(0, newXPlayer);
 				else
 					continue;
@@ -302,7 +298,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(! holes.contains(temp))//x-1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x-1, y))					
 					posPlayers.get(0).set(0, newXPlayer);
 				else
 					continue;
@@ -314,7 +310,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(! holes.contains(temp))//x, y+1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y+1))					
 					posPlayers.get(0).set(1, newYPlayer);
 				else
 					continue;
@@ -325,7 +321,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) - 1;                    	
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp))//x, y-1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y-1))					
 					posPlayers.get(0).set(1, newYPlayer);
 				else
 					continue;
@@ -333,7 +329,7 @@ public class AlphaBetaIA1action extends GenericIA{
 
 
 			// simu 
-			tmp = min(profondeur-1);//etatJeu
+			tmp = min(profondeur-1, max);//etatJeu
 
 			if(tmp > max)
 				max = tmp;
@@ -368,7 +364,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x+1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x+1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -379,7 +375,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) - 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x-1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x-1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -390,7 +386,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) + 1;
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp))//x, y+1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y+1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -401,19 +397,16 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) - 1;
 				temp.set(1, newXPlayer);				
 
-				if(! holes.contains(temp))//x, y-1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y-1))					
 					posArrows.add(temp);
 				else
 					continue;
 			}
 
-			//j==4 signifie pas de fleche
 
 			for(int k=0 ; k<4 ; k++){ //sens fleche
 
 				// affectation sens fleches
-
-				if(j != 4){
 
 					if(k==0)
 						dirArrows.add('L');
@@ -423,7 +416,6 @@ public class AlphaBetaIA1action extends GenericIA{
 						dirArrows.add('U');
 					if(k==3)
 						dirArrows.add('D');
-				}
 
 				// simu 
 				tmp = min(profondeur-1, max);//etatJeu
@@ -470,7 +462,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(1).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x+1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x+1, y))					
 					posPlayers.get(1).set(0, newXPlayer);
 				else
 					continue;
@@ -482,7 +474,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(1).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(! holes.contains(temp))//x-1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x-1, y))					
 					posPlayers.get(1).set(0, newXPlayer);
 				else
 					continue;
@@ -494,7 +486,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(1).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(! holes.contains(temp))//x, y+1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x, y+1))					
 					posPlayers.get(1).set(1, newYPlayer);
 				else
 					continue;
@@ -505,11 +497,12 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(1).get(1) - 1;                    	
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp))//x, y-1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x, y-1))					
 					posPlayers.get(1).set(1, newYPlayer);
 				else
 					continue;
 			} 			
+			
 
 
 			// simu 
@@ -556,7 +549,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(1).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x+1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x+1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -567,7 +560,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(1).get(0) - 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp))//x-1, y))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x-1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -578,7 +571,7 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(1).get(1) + 1;
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp))//x, y+1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x, y+1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -589,17 +582,16 @@ public class AlphaBetaIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(1).get(1) - 1;
 				temp.set(1, newXPlayer);				
 
-				if(! holes.contains(temp))//x, y-1))					
+				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x, y-1))					
 					posArrows.add(temp);
 				else
 					continue;
 			}
 
+
 			for(int k=0 ; k<4 ; k++){ //sens fleche
 
 				// affectation sens fleches
-
-				if(j != 4){
 
 					if(k==0)
 						dirArrows.add('L');
@@ -609,7 +601,6 @@ public class AlphaBetaIA1action extends GenericIA{
 						dirArrows.add('U');
 					if(k==3)
 						dirArrows.add('D');
-				}
 
 				// simu 
 				tmp = max(profondeur-1);//etatJeu
@@ -622,10 +613,8 @@ public class AlphaBetaIA1action extends GenericIA{
 				//setTabPionPos(i, j, Pion.Rien);                     
 				dirArrows.remove(dirArrows.size()-1);	
 				
-				if(min <= alpha){
-					posArrows.remove(posArrows.size()-1);						
-					break;					
-				}
+				if(min <= alpha)
+					break;									
 			}
 
 			posArrows.remove(posArrows.size()-1);				
