@@ -13,7 +13,7 @@ public class IACampaignTest extends IA{
 	public Action calculNextAction(Player player, Game game) {
 		
 		ArrayList<String> sMap = CampaignIaConverter.toClientInit(game.getMap());
-		ArrayList<String> positions = CampaignIaConverter.toClient(game);
+		ArrayList<String> positions = CampaignIaConverter.toClient(game, player);
 		
 		MinMaxIA1action clientIA = new MinMaxIA1action(sMap);
 		String sAction = clientIA.playTurn(positions);

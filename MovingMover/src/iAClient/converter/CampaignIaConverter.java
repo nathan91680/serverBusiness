@@ -37,7 +37,7 @@ public class CampaignIaConverter {
 		return sMap;
 	}
 
-	public static ArrayList<String> toClient(Game game){
+	public static ArrayList<String> toClient(Game game, Player actor){
 		/*
 		 * nbfleches 5
 		 * 4 3 D 7 1 U ....
@@ -51,7 +51,8 @@ public class CampaignIaConverter {
 		String arrowsPosition = "";
 
 		int nbPlayers = 0;
-		String playersPosition = "";
+		String playersPositionBegin = "";
+		String playersPositionEnd = "";
 
 		for(int i = 0; i < game.getMap().getWidth(); i++) {
 			for(int j = 0; j < game.getMap().getHeight(); j++) {
@@ -79,20 +80,22 @@ public class CampaignIaConverter {
 				}
 			}
 		}
-
-		game.getPlayers().size();
-
 		for(int i = 0; i < game.getPlayers().size(); i++) {
 			if(game.getPlayers().get(i) != null) {
 				nbPlayers += 1;
-				playersPosition += "" + game.getPlayers().get(i).getCell().getX() + " " + game.getPlayers().get(i).getCell().getY() + " ";
+				if(actor.getId().intValue()-1 >= i) {
+					playersPositionEnd += "" + game.getPlayers().get(i).getCell().getX() + " " + game.getPlayers().get(i).getCell().getY() + " ";
+				}
+				else {
+					playersPositionBegin += "" + game.getPlayers().get(i).getCell().getX() + " " + game.getPlayers().get(i).getCell().getY() + " ";
+				}
 			}
 		}
 
 		positions.add(""+nbArrows);
 		positions.add(arrowsPosition);
 		positions.add(""+nbPlayers);
-		positions.add(playersPosition);
+		positions.add(playersPositionEnd + playersPositionBegin);
 
 		return positions;
 
