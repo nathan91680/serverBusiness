@@ -4,6 +4,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import session.IAException;
 import session.impl.ActionMove;
 import session.impl.Game;
 import session.impl.IAActionCalculator;
@@ -38,7 +39,11 @@ public abstract class IA {
 		
 		catch (Exception e) {
 			if(e instanceof TimeoutException) {
-				System.out.println("trop tard");
+				System.out.println("IA : temps d'attente écoulé");
+			}
+			else if(!(e instanceof IAException)) {
+				System.out.println("IA : une exception est retournée depuis l'IA");
+				e.printStackTrace();
 			}
 			IARandom iARandom = new IARandom();
 			action = iARandom.calculNextAction(player,game);

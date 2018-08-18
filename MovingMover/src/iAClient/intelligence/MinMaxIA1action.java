@@ -7,7 +7,7 @@ public class MinMaxIA1action extends GenericIA{
 
 	public MinMaxIA1action(ArrayList<String> gameData){
 
-		super(gameData);		
+		super(gameData);	
 	}
 
 	@Override
@@ -30,9 +30,9 @@ public class MinMaxIA1action extends GenericIA{
 	// ou encore a appliquer a partir d'une distance de 2 selon HB ou GD)
 	// fonction qui determine si on va preferer se deplacer (20=>4) : si distance a l'autre
 	// trop elevee, sauf si on est entrain de construire un chemin de fleches..
-	
+
 	// adapter reflexe1 a regle1 ou faire new ?
-	
+
 	// strategie : blinder carte de fleches avec de partout un chemin vers trou
 	// entourer l'adversaire
 	// on demarre d'un trou(+ roche delui ou moi), on pose des fleches dans l'ordre case par case 
@@ -40,7 +40,7 @@ public class MinMaxIA1action extends GenericIA{
 	// on se rapproche de lui - on essaye de l'entourer au max - 
 	// tout en priorisant l'esquive des fleches qui nous amene sur ce chemin
 	// => se fait en 1 action ou 2 actions (a adapter)
-	
+
 	// Algo MinMax
 	private String minMax(ArrayList<String> inputData, int profondeur){
 
@@ -68,7 +68,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1) )//x+1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue() )//x+1, y))					
 					posPlayers.get(0).set(0, newXPlayer);
 				else
 					continue;
@@ -80,7 +80,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x-1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x-1, y))					
 					posPlayers.get(0).set(0, newXPlayer);
 				else
 					continue;
@@ -92,7 +92,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y+1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x, y+1))					
 					posPlayers.get(0).set(1, newYPlayer);
 				else
 					continue;
@@ -103,7 +103,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) - 1;                    	
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y-1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x, y-1))					
 					posPlayers.get(0).set(1, newYPlayer);
 				else
 					continue;
@@ -134,10 +134,10 @@ public class MinMaxIA1action extends GenericIA{
 
 
 		for(int j=0 ; j<4 ; j++){ //fleche
-			
+
 			//idee elagage
 			//if(distancePlayers > 6)
-				//break;
+			//break;
 
 			newXPlayer = posPlayers.get(0).get(0);
 			newYPlayer = posPlayers.get(0).get(1);
@@ -152,7 +152,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x+1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x+1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -163,7 +163,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) - 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x-1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x-1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -174,7 +174,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) + 1;
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y+1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x, y+1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -185,7 +185,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) - 1;
 				temp.set(1, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y-1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x, y-1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -196,14 +196,14 @@ public class MinMaxIA1action extends GenericIA{
 				// affectation sens fleches
 
 
-					if(k==0)
-						dirArrows.add('L');
-					if(k==1)
-						dirArrows.add('R');
-					if(k==2)
-						dirArrows.add('U');
-					if(k==3)
-						dirArrows.add('D');
+				if(k==0)
+					dirArrows.add('L');
+				if(k==1)
+					dirArrows.add('R');
+				if(k==2)
+					dirArrows.add('U');
+				if(k==3)
+					dirArrows.add('D');
 
 				// simu 
 				tmp = min(profondeur-1);//etatJeu
@@ -222,7 +222,7 @@ public class MinMaxIA1action extends GenericIA{
 
 			posArrows.remove(posArrows.size()-1);					
 		}
-
+		//System.out.println(max);
 		//setTabPionPos(maxi, maxj);
 		if(maxi == 0)
 			result = "Move " + String.valueOf(posPlayers.get(0).get(0) + 1) + " " + String.valueOf(posPlayers.get(0).get(1));
@@ -286,7 +286,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x+1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue() )//x+1, y))					
 					posPlayers.get(0).set(0, newXPlayer);
 				else
 					continue;
@@ -298,7 +298,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x-1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x-1, y))					
 					posPlayers.get(0).set(0, newXPlayer);
 				else
 					continue;
@@ -310,7 +310,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y+1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x, y+1))					
 					posPlayers.get(0).set(1, newYPlayer);
 				else
 					continue;
@@ -321,11 +321,11 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) - 1;                    	
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y-1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x, y-1))					
 					posPlayers.get(0).set(1, newYPlayer);
 				else
 					continue;
-			} 			
+			} 					
 
 
 			// simu 
@@ -364,7 +364,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x+1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x+1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -375,7 +375,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(0).get(0) - 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x-1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x-1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -386,7 +386,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) + 1;
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y+1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x, y+1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -397,7 +397,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(0).get(1) - 1;
 				temp.set(1, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(1).get(0) && temp.get(1) != posPlayers.get(1).get(1))//x, y-1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(1).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(1).get(1).intValue())//x, y-1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -408,14 +408,14 @@ public class MinMaxIA1action extends GenericIA{
 
 				// affectation sens fleches
 
-					if(k==0)
-						dirArrows.add('L');
-					if(k==1)
-						dirArrows.add('R');
-					if(k==2)
-						dirArrows.add('U');
-					if(k==3)
-						dirArrows.add('D');
+				if(k==0)
+					dirArrows.add('L');
+				if(k==1)
+					dirArrows.add('R');
+				if(k==2)
+					dirArrows.add('U');
+				if(k==3)
+					dirArrows.add('D');
 
 				// simu 
 				tmp = min(profondeur-1);//etatJeu
@@ -462,7 +462,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(1).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x+1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(0).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(0).get(1).intValue())//x+1, y))					
 					posPlayers.get(1).set(0, newXPlayer);
 				else
 					continue;
@@ -474,7 +474,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(1).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x-1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(0).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(0).get(1).intValue())//x-1, y))					
 					posPlayers.get(1).set(0, newXPlayer);
 				else
 					continue;
@@ -486,7 +486,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(1).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x, y+1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(0).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(0).get(1).intValue())//x, y+1))					
 					posPlayers.get(1).set(1, newYPlayer);
 				else
 					continue;
@@ -497,7 +497,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(1).get(1) - 1;                    	
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x, y-1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(0).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(0).get(1).intValue())//x, y-1))					
 					posPlayers.get(1).set(1, newYPlayer);
 				else
 					continue;
@@ -541,7 +541,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(1).get(0) + 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x+1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(0).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(0).get(1).intValue())//x+1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -552,7 +552,7 @@ public class MinMaxIA1action extends GenericIA{
 				newXPlayer = posPlayers.get(1).get(0) - 1;
 				temp.set(0, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x-1, y))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(0).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(0).get(1).intValue())//x-1, y))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -563,7 +563,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(1).get(1) + 1;
 				temp.set(1, newYPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x, y+1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(0).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(0).get(1).intValue())//x, y+1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -574,7 +574,7 @@ public class MinMaxIA1action extends GenericIA{
 				newYPlayer = posPlayers.get(1).get(1) - 1;
 				temp.set(1, newXPlayer);				
 
-				if(! holes.contains(temp) && temp.get(0) != posPlayers.get(0).get(0) && temp.get(1) != posPlayers.get(0).get(1))//x, y-1))					
+				if(! contain(holes,temp) && temp.get(0).intValue() != posPlayers.get(0).get(0).intValue() && temp.get(1).intValue() != posPlayers.get(0).get(1).intValue())//x, y-1))					
 					posArrows.add(temp);
 				else
 					continue;
@@ -584,14 +584,14 @@ public class MinMaxIA1action extends GenericIA{
 
 				// affectation sens fleches
 
-					if(k==0)
-						dirArrows.add('L');
-					if(k==1)
-						dirArrows.add('R');
-					if(k==2)
-						dirArrows.add('U');
-					if(k==3)
-						dirArrows.add('D');
+				if(k==0)
+					dirArrows.add('L');
+				if(k==1)
+					dirArrows.add('R');
+				if(k==2)
+					dirArrows.add('U');
+				if(k==3)
+					dirArrows.add('D');
 
 				// simu 
 				tmp = max(profondeur-1);//etatJeu
@@ -637,7 +637,7 @@ public class MinMaxIA1action extends GenericIA{
 		int dist = 0, puissanceFleche = 1;
 
 		//gestion perso
-		if (posArrows.contains(posPlayers.get(0))){
+		if (contain(posArrows,posPlayers.get(0))){
 
 			score = -5000;
 			ArrayList<Integer> temp = new ArrayList<Integer>();			
@@ -661,28 +661,28 @@ public class MinMaxIA1action extends GenericIA{
 				dirArrow = dirArrows.get(indice);			
 
 				if(dirArrow == 'L'){
-					while (! holes.contains(temp) || posArrows.contains(temp)){//attention limite de 0				
+					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
 						temp.set(0, temp.get(0) - 1);
 					}
 					posCLosestObj = temp;
 					dist = posCLosestObjSave.get(0) - temp.get(0);
 				}
 				if(dirArrow == 'R'){
-					while (! holes.contains(temp) || posArrows.contains(temp)){//attention limite de 0				
+					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
 						temp.set(0, temp.get(0) + 1);
 					}
 					posCLosestObj = temp;
 					dist = temp.get(0) - posCLosestObjSave.get(0);				
 				}
 				if(dirArrow == 'U'){
-					while (! holes.contains(temp) || posArrows.contains(temp)){//attention limite de 0				
+					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
 						temp.set(1, temp.get(1) - 1);
 					}
 					posCLosestObj = temp;
 					dist = posCLosestObjSave.get(1) - temp.get(1);				
 				}
 				if(dirArrow == 'D'){
-					while (! holes.contains(temp) || posArrows.contains(temp)){//attention limite de 0				
+					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
 						temp.set(1, temp.get(1) + 1);
 					}
 					posCLosestObj = temp;
@@ -690,9 +690,9 @@ public class MinMaxIA1action extends GenericIA{
 				}	
 
 				if(dist <= puissanceFleche){//check quel est l'objet rencontre
-					if (holes.contains(posCLosestObj))					   
+					if (contain(holes,posCLosestObj))					   
 						return -10000;
-					else if(posArrows.contains(posCLosestObj))
+					else if(contain(posArrows,(posCLosestObj)))
 						continue;
 					else//ajouter cas autres objets genre boosters
 						break;
@@ -702,7 +702,7 @@ public class MinMaxIA1action extends GenericIA{
 
 		// memes cas pour l'ennemi (factoriser dans une fct et ne pas redeclarer les memes var ainsi)
 
-		if (posArrows.contains(posPlayers.get(1))){
+		if (contain(posArrows,posPlayers.get(1))){
 
 			score = 5000;		   
 
@@ -727,28 +727,28 @@ public class MinMaxIA1action extends GenericIA{
 				dirArrow = dirArrows.get(indice);			
 
 				if(dirArrow == 'L'){
-					while (! holes.contains(temp) || posArrows.contains(temp)){//attention limite de 0				
+					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
 						temp.set(0, temp.get(0) - 1);
 					}
 					posCLosestObj = temp;
 					dist = posCLosestObjSave.get(0) - temp.get(0);
 				}
 				if(dirArrow == 'R'){
-					while (! holes.contains(temp) || posArrows.contains(temp)){//attention limite de 0				
+					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
 						temp.set(0, temp.get(0) + 1);
 					}
 					posCLosestObj = temp;
 					dist = temp.get(0) - posCLosestObjSave.get(0);				
 				}
 				if(dirArrow == 'U'){
-					while (! holes.contains(temp) || posArrows.contains(temp)){//attention limite de 0				
+					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
 						temp.set(1, temp.get(1) - 1);
 					}
 					posCLosestObj = temp;
 					dist = posCLosestObjSave.get(1) - temp.get(1);				
 				}
 				if(dirArrow == 'D'){
-					while (! holes.contains(temp) || posArrows.contains(temp)){//attention limite de 0				
+					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
 						temp.set(1, temp.get(1) + 1);
 					}
 					posCLosestObj = temp;
@@ -756,12 +756,12 @@ public class MinMaxIA1action extends GenericIA{
 				}	
 
 				if(dist <= puissanceFleche){//check quel est l'objet rencontre
-					if (holes.contains(posCLosestObj)) {
+					if (contain(holes, posCLosestObj)) {
 						return 10000;
 					}
-						
-					
-					else if(posArrows.contains(posCLosestObj))
+
+
+					else if(contain(posArrows,posCLosestObj))
 						continue;
 					else//ajouter cas autres objets genre boosters
 						break;
@@ -824,13 +824,13 @@ private int max(int profondeur){
 
 
 				//if(p.getTabPionPos(i, j) == Pion.Rien){//revoir if pour verif chaque cas
-				if(i==0 && ! holes.contains(temp))//x+1, y))
+				if(i==0 && ! contain(holes,temp))//x+1, y))
 					posPlayers.get(0).set(0, newXPlayer);
 
 				newXPlayer = posPlayers.get(0).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(i==1 && ! holes.contains(temp))	//x-1, y))
+				if(i==1 && ! contain(holes,temp))	//x-1, y))
 					posPlayers.get(0).set(0, newXPlayer);                    		
 
 				newXPlayer = posPlayers.get(0).get(0);                    	
@@ -838,13 +838,13 @@ private int max(int profondeur){
 				newYPlayer = posPlayers.get(0).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(i==2 && ! holes.contains(temp))//x, y+1))
+				if(i==2 && ! contain(holes,temp))//x, y+1))
 					posPlayers.get(0).set(1, newYPlayer);
 
 				newYPlayer = posPlayers.get(0).get(1) - 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(i==3 && ! holes.contains(temp))	//x, y-1))
+				if(i==3 && ! contain(holes,temp))	//x, y-1))
 					posPlayers.get(0).set(1, newYPlayer);
 
 				//i==4 : pas de deplacement
@@ -854,56 +854,56 @@ private int max(int profondeur){
 				newXPlayer = posPlayers.get(0).get(0) + 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(j==0 && ! holes.contains(temp)){//x+1, y))
+				if(j==0 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}
 
 				newYPlayer = posPlayers.get(0).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(j==1 && ! holes.contains(temp)){//x+1, y))
+				if(j==1 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}                    	
 
 				newXPlayer = posPlayers.get(0).get(0);                    	
 				temp.set(0, newXPlayer);
 
-				if(j==2 && ! holes.contains(temp)){//x+1, y))
+				if(j==2 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}
 
 				newXPlayer = posPlayers.get(0).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(j==3 && ! holes.contains(temp)){//x+1, y))
+				if(j==3 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}                    	
 
 				newYPlayer = posPlayers.get(0).get(1);                    	
 				temp.set(1, newYPlayer);
 
-				if(j==4 && ! holes.contains(temp)){//x+1, y))
+				if(j==4 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				} 
 
 				newYPlayer = posPlayers.get(0).get(1) - 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(j==5 && ! holes.contains(temp)){//x+1, y))
+				if(j==5 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				} 
 
 				newXPlayer = posPlayers.get(0).get(0);                    	
 				temp.set(0, newXPlayer);
 
-				if(j==6 && ! holes.contains(temp)){//x+1, y))
+				if(j==6 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}
 
 				newXPlayer = posPlayers.get(0).get(0) + 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(j==7 && ! holes.contains(temp)){//x+1, y))
+				if(j==7 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				} 
 
@@ -978,13 +978,13 @@ private int min(int profondeur){
 
 
 				//if(p.getTabPionPos(i, j) == Pion.Rien){//revoir if pour verif chaque cas
-				if(i==0 && ! holes.contains(temp))//x+1, y))
+				if(i==0 && ! contain(holes,temp))//x+1, y))
 					posPlayers.get(1).set(0, newXPlayer);
 
 				newXPlayer = posPlayers.get(1).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(i==1 && ! holes.contains(temp))	//x-1, y))
+				if(i==1 && ! contain(holes,temp))	//x-1, y))
 					posPlayers.get(1).set(0, newXPlayer);                    		
 
 				newXPlayer = posPlayers.get(1).get(0);                    	
@@ -992,13 +992,13 @@ private int min(int profondeur){
 				newYPlayer = posPlayers.get(1).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(i==2 && ! holes.contains(temp))//x, y+1))
+				if(i==2 && ! contain(holes,temp))//x, y+1))
 					posPlayers.get(1).set(1, newYPlayer);
 
 				newYPlayer = posPlayers.get(1).get(1) - 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(i==3 && ! holes.contains(temp))	//x, y-1))
+				if(i==3 && ! contain(holes,temp))	//x, y-1))
 					posPlayers.get(1).set(1, newYPlayer);
 
 				//i==4 : pas de deplacement
@@ -1009,56 +1009,56 @@ private int min(int profondeur){
 				newXPlayer = posPlayers.get(1).get(0) + 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(j==0 && ! holes.contains(temp)){//x+1, y))
+				if(j==0 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}
 
 				newYPlayer = posPlayers.get(1).get(1) + 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(j==1 && ! holes.contains(temp)){//x+1, y))
+				if(j==1 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}                    	
 
 				newXPlayer = posPlayers.get(1).get(0);                    	
 				temp.set(0, newXPlayer);
 
-				if(j==2 && ! holes.contains(temp)){//x+1, y))
+				if(j==2 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}
 
 				newXPlayer = posPlayers.get(1).get(0) - 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(j==3 && ! holes.contains(temp)){//x+1, y))
+				if(j==3 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}                    	
 
 				newYPlayer = posPlayers.get(1).get(1);                    	
 				temp.set(1, newYPlayer);
 
-				if(j==4 && ! holes.contains(temp)){//x+1, y))
+				if(j==4 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				} 
 
 				newYPlayer = posPlayers.get(1).get(1) - 1;                    	
 				temp.set(1, newYPlayer);
 
-				if(j==5 && ! holes.contains(temp)){//x+1, y))
+				if(j==5 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				} 
 
 				newXPlayer = posPlayers.get(1).get(0);                    	
 				temp.set(0, newXPlayer);
 
-				if(j==6 && ! holes.contains(temp)){//x+1, y))
+				if(j==6 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				}
 
 				newXPlayer = posPlayers.get(1).get(0) + 1;                    	
 				temp.set(0, newXPlayer);
 
-				if(j==7 && ! holes.contains(temp)){//x+1, y))
+				if(j==7 && ! contain(holes,temp)){//x+1, y))
 					posArrows.add(temp);
 				} 
 

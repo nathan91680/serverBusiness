@@ -120,5 +120,14 @@ public abstract class GenericIA {
 	int max(int a, int b){
 		return ( (a>b) ? a : b );
 	}
+	
+	boolean contain(ArrayList <ArrayList <Integer>> contener, ArrayList <Integer> temp) {
+
+		for (int i = 0 ; i < contener.size(); i++) {
+			if(temp.get(0).intValue() == contener.get(i).get(0).intValue() && temp.get(1).intValue() == contener.get(i).get(1).intValue())
+				return true;
+		}
+		return false;
+	}
 
 }

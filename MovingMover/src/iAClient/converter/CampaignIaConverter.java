@@ -21,19 +21,31 @@ public class CampaignIaConverter {
 	public static ArrayList<String> toClientInit(Map map){
 
 		ArrayList<String> sMap = new ArrayList<String>();
-
+		
+		String holeLine = "";
+		
 		for(int i = 0; i < map.getWidth(); i++) {
-			String line = "";
+			holeLine += "X";
+		}
+		System.out.println(holeLine);
+		sMap.add(holeLine);
+		for(int i = 0; i < map.getWidth(); i++) {
+			String line = "X";
 			for(int j = 0; j < map.getHeight(); j++) {
 				if(map.getCell(i, j) != null) {
-					line += "X";
-				}
-				else {
 					line += ".";
 				}
+				else {
+					line += "X";
+				}
 			}
+			line += "X";
+			System.out.println(line);
 			sMap.add(line);
 		}
+		sMap.add(holeLine);
+		System.out.println(holeLine);
+		
 		return sMap;
 	}
 
@@ -76,18 +88,18 @@ public class CampaignIaConverter {
 					default:
 						/*Action*/;             
 					}
-					arrowsPosition += "" + i + " " + j + " " + direction + " ";
+					arrowsPosition += "" + (i+1) + " " + (j+1) + " " + direction + " ";
 				}
 			}
 		}
 		for(int i = 0; i < game.getPlayers().size(); i++) {
 			if(game.getPlayers().get(i) != null) {
 				nbPlayers += 1;
-				if(actor.getId().intValue()-1 >= i) {
-					playersPositionEnd += "" + game.getPlayers().get(i).getCell().getX() + " " + game.getPlayers().get(i).getCell().getY() + " ";
+				if(actor.getId().intValue()-1 <= i) {
+					playersPositionEnd += "" + (game.getPlayers().get(i).getCell().getX()+1) + " " + (game.getPlayers().get(i).getCell().getY()+1) + " ";
 				}
 				else {
-					playersPositionBegin += "" + game.getPlayers().get(i).getCell().getX() + " " + game.getPlayers().get(i).getCell().getY() + " ";
+					playersPositionBegin += "" + (game.getPlayers().get(i).getCell().getX()+1) + " " + (game.getPlayers().get(i).getCell().getY()+1) + " ";
 				}
 			}
 		}
@@ -107,6 +119,8 @@ public class CampaignIaConverter {
 		 * Move posX posY
 		 * Arrow posX posY dir
 		 */
+		
+		System.out.println(sAction);
 
 		Action action = null;
 
@@ -119,8 +133,8 @@ public class CampaignIaConverter {
 					ActionMove actionMove = new ActionMove();
 					actionMove.setActor(actor);
 					actionMove.setChoosed(true);
-					int x = Integer.parseInt(splitAction[1]);
-					int y = Integer.parseInt(splitAction[2]);
+					int x = Integer.parseInt(splitAction[1])-1;
+					int y = Integer.parseInt(splitAction[2])-1;
 					Direction direction = null;
 					if(x > actor.getCell().getX()) {
 						direction = Direction.RIGHT;
@@ -141,8 +155,8 @@ public class CampaignIaConverter {
 					ActionPutArrow actionPutArrow = new ActionPutArrow();
 					actionPutArrow.setActor(actor);
 					actionPutArrow.setChoosed(true);
-					int posX = Integer.parseInt(splitAction[1]);
-					int posY = Integer.parseInt(splitAction[2]);
+					int posX = Integer.parseInt(splitAction[1])-1;
+					int posY = Integer.parseInt(splitAction[2])-1;
 					String sDirection = splitAction[3];
 					Direction putDirection = null;
 					Direction arrowDirection = null;
