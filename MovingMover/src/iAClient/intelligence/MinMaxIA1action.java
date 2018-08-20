@@ -661,30 +661,30 @@ public class MinMaxIA1action extends GenericIA{
 				dirArrow = dirArrows.get(indice);			
 
 				if(dirArrow == 'L'){
-					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
+					do{//attention limite de 0				)
 						temp.set(0, temp.get(0) - 1);
-					}
+					}while (! (contain(holes,temp) || contain(posArrows,temp)) );
 					posCLosestObj = temp;
 					dist = posCLosestObjSave.get(0) - temp.get(0);
 				}
 				if(dirArrow == 'R'){
-					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
+					do{//attention limite de 0				)
 						temp.set(0, temp.get(0) + 1);
-					}
+					}while (! (contain(holes,temp) || contain(posArrows,temp)) );
 					posCLosestObj = temp;
 					dist = temp.get(0) - posCLosestObjSave.get(0);				
 				}
 				if(dirArrow == 'U'){
-					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
+					do{//attention limite de 0				)
 						temp.set(1, temp.get(1) - 1);
-					}
+					}while (! (contain(holes,temp) || contain(posArrows,temp)) );
 					posCLosestObj = temp;
 					dist = posCLosestObjSave.get(1) - temp.get(1);				
 				}
 				if(dirArrow == 'D'){
-					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
+					do{//attention limite de 0				)
 						temp.set(1, temp.get(1) + 1);
-					}
+					}while (! (contain(holes,temp) || contain(posArrows,temp)) );
 					posCLosestObj = temp;
 					dist = temp.get(1) - posCLosestObjSave.get(1);								
 				}	
@@ -727,30 +727,31 @@ public class MinMaxIA1action extends GenericIA{
 				dirArrow = dirArrows.get(indice);			
 
 				if(dirArrow == 'L'){
-					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
+					do{//attention limite de 0				)
 						temp.set(0, temp.get(0) - 1);
-					}
+					}while (! (contain(holes,temp) || contain(posArrows,temp)) );
 					posCLosestObj = temp;
 					dist = posCLosestObjSave.get(0) - temp.get(0);
 				}
 				if(dirArrow == 'R'){
-					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
+					do{//attention limite de 0				)
 						temp.set(0, temp.get(0) + 1);
-					}
+					}while (! (contain(holes,temp) || contain(posArrows,temp)) );
 					posCLosestObj = temp;
 					dist = temp.get(0) - posCLosestObjSave.get(0);				
 				}
 				if(dirArrow == 'U'){
-					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
+					do{//attention limite de 0				)
 						temp.set(1, temp.get(1) - 1);
-					}
+					}while (! (contain(holes,temp) || contain(posArrows,temp)) );
 					posCLosestObj = temp;
 					dist = posCLosestObjSave.get(1) - temp.get(1);				
 				}
 				if(dirArrow == 'D'){
-					while (! contain(holes,temp) || contain(posArrows,temp)){//attention limite de 0				)
+					do{
 						temp.set(1, temp.get(1) + 1);
-					}
+					}while (! (contain(holes,temp) || contain(posArrows,temp)) );//attention limite de 0				)
+
 					posCLosestObj = temp;
 					dist = temp.get(1) - posCLosestObjSave.get(1);								
 				}	
