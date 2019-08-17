@@ -5,8 +5,12 @@ import dao.exception.DAOException;
 
 public interface IUserDao {
 	
-	void create( User user ) throws DAOException;
+	User create( User user ) throws DAOException;
 
     User find( Integer id ) throws DAOException;
+    
+    User update( User user ) throws DAOException;
+    
+    Boolean delete( Integer id ) throws DAOException;
 
 }

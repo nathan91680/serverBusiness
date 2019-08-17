@@ -1,14 +1,32 @@
 package presentation.dto;
 
 public class UserDto {
-	
-private String firstname;
-	
+
+	private Integer id;
+
+	private String firstname;
+
 	private String lastname;
-	
+
 	private String pwd;
-	
+
 	private String eMail;
+	
+	
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the firstname
@@ -65,7 +83,7 @@ private String firstname;
 	public void seteMail(String eMail) {
 		this.eMail = eMail;
 	}
-	
-	
+
+
 
 }

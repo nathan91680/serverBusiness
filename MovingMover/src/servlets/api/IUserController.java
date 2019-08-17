@@ -11,8 +11,8 @@ public interface IUserController {
 	
 	public ResponseEntity<List<User>> getUsers();
 	public ResponseEntity<UserDto> getUser(Integer id);
-	public ResponseEntity<User> createUser(User user);
-	public ResponseEntity<User> modifyUser(User user);
+	public ResponseEntity<UserDto> createUser(UserDto userDto);
+	public ResponseEntity<UserDto> modifyUser(UserDto userDto);
 	public ResponseEntity<Boolean> deleteUser(Integer id);
 
 }

@@ -4,8 +4,12 @@ import bean.User;
 
 public interface IUserService {
 	
-	public Integer createUser(String firstname, String lastname, String eMail, String pwd);
+	public User createUser(User user) throws Exception;
 	
-	public User findUser(Integer id);
+	public User findUser(Integer id) throws Exception;
+	
+	public User updateUser(User user) throws Exception;
+	
+	public Boolean deleteUser(Integer id) throws Exception;
 
 }
